@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -11,25 +11,48 @@
     <main>
       <header class="text-zinc-100">
         <nav
-          class="sticky flex top-0 bg-gradient-to-r from-rose-500 to-pink-500"
+          class="sticky top-0 flex bg-gradient-to-r from-rose-500 to-pink-500"
         >
-          <div class="flex items-center p-2 gap-2">
+          <div class="flex items-center gap-2 p-2">
             <img src="assets/images/logo-inverted.png" width="50" alt="logo" />
-            <div class="font-bold text-2xl">
+            <div class="text-2xl font-bold">
               tw:<span class="text-sky-900">mf</span>
             </div>
           </div>
 
-          <div class="flex flex-1 items-center justify-end font-bold pr-2">
-            <ul class="flex gap-6 h-full">
+          <div class="flex flex-1 items-center justify-end font-bold">
+            <ul class="flex h-full gap-6">
               <li class="menu-item">
                 <a class="flex items-center" href="#">Home</a>
               </li>
               <li class="menu-item">
-                <a v href="#">Lineup</a>
+                <a class="flex items-center" href="#">Lineup</a>
+                <!--  <div
+                  class="absolute top-full bg-pink-500 right-0 whitespace-nowrap rounded-b-md text-right p-1"
+                >
+                  Sub menu items adasdasdasdas
+                </div> -->
               </li>
-              <li class="menu-item">
+              <li class="menu-item group">
                 <a class="flex items-center" href="#">Tickets</a>
+                <ul
+                  class="absolute right-0 top-full hidden whitespace-nowrap rounded-b-md bg-pink-500 text-right group-hover:block"
+                >
+                  <li>
+                    <a
+                      class="flex cursor-pointer items-center p-2 text-pink-200 transition-colors ease-in-out hover:bg-white/5 hover:text-zinc-200"
+                      href="#"
+                      >Single Day Tickets</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="flex cursor-pointer items-center p-2 text-pink-200 transition-colors ease-in-out hover:bg-white/5 hover:text-zinc-200"
+                      href="#"
+                      >7 Day Tickets</a
+                    >
+                  </li>
+                </ul>
               </li>
               <li class="menu-item">
                 <a class="flex items-center" href="#">Support</a>
