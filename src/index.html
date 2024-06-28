@@ -6,6 +6,18 @@
     <link href="/dist/output.css" rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/fontawesome.min.js"></script>
     <script defer src="./assets/fontawesome/js/solid.min.js"></script>
+    <script>
+      window.onload = function () {
+        const mobileMenuicon = document.querySelector("#mobile-menu-button");
+        mobileMenuicon.addEventListener("click", function () {
+          if (mobileMenuicon.classList.contains("open")) {
+            mobileMenuicon.classList.remove("open");
+          } else {
+            mobileMenuicon.classList.add("open");
+          }
+        });
+      };
+    </script>
   </head>
   <body>
     <main>
@@ -19,19 +31,28 @@
               tw:<span class="text-sky-900">mf</span>
             </div>
           </div>
-
-          <div class="flex flex-1 items-center justify-end font-bold">
+          <div
+            class="flex flex-1 cursor-pointer items-center justify-end pr-2 md:hidden"
+          >
+            <button class="group grid gap-1" id="mobile-menu-button">
+              <div
+                class="relative h-1 w-8 rounded-full bg-zinc-200 transition-all group-open:top-2 group-open:rotate-45"
+              ></div>
+              <div
+                class="relative h-1 w-8 rounded-full bg-zinc-200 opacity-100 transition-all group-open:opacity-0"
+              ></div>
+              <div
+                class="relative -top-2 mt-2 h-1 w-8 rounded-full bg-zinc-200 transition-all group-open:mt-0 group-open:-rotate-45"
+              ></div>
+            </button>
+          </div>
+          <div class="hidden flex-1 items-center justify-end font-bold md:flex">
             <ul class="flex h-full gap-6">
               <li class="menu-item">
                 <a class="flex items-center" href="#">Home</a>
               </li>
               <li class="menu-item">
                 <a class="flex items-center" href="#">Lineup</a>
-                <!--  <div
-                  class="absolute top-full bg-pink-500 right-0 whitespace-nowrap rounded-b-md text-right p-1"
-                >
-                  Sub menu items adasdasdasdas
-                </div> -->
               </li>
               <li class="menu-item group">
                 <a class="flex items-center" href="#">Tickets</a>
