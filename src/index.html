@@ -34,7 +34,7 @@
           <div
             class="flex flex-1 cursor-pointer items-center justify-end pr-2 md:hidden"
           >
-            <button class="group grid gap-1" id="mobile-menu-button">
+            <button class="group peer grid gap-1" id="mobile-menu-button">
               <div
                 class="relative h-1 w-8 rounded-full bg-zinc-200 transition-all group-open:top-2 group-open:rotate-45"
               ></div>
@@ -45,7 +45,13 @@
                 class="relative -top-2 mt-2 h-1 w-8 rounded-full bg-zinc-200 transition-all group-open:mt-0 group-open:-rotate-45"
               ></div>
             </button>
+            <div
+              class="absolute left-0 top-[62px] hidden w-full bg-gradient-to-r from-rose-500 to-pink-500 peer-open:block"
+            >
+              mobile menu
+            </div>
           </div>
+
           <div class="hidden flex-1 items-center justify-end font-bold md:flex">
             <ul class="flex h-full gap-6">
               <li class="menu-item">
