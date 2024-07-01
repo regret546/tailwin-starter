@@ -695,12 +695,20 @@ html {
   cursor: pointer;
 }
 
+.flex-col{
+  flex-direction: column;
+}
+
 .items-center{
   align-items: center;
 }
 
 .justify-end{
   justify-content: flex-end;
+}
+
+.justify-center{
+  justify-content: center;
 }
 
 .gap-1{
@@ -764,12 +772,24 @@ html {
   padding: 0.5rem;
 }
 
+.p-4{
+  padding: 1rem;
+}
+
 .pr-2{
   padding-right: 0.5rem;
 }
 
 .text-right{
   text-align: right;
+}
+
+.font-serif{
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.font-sans{
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .text-2xl{
@@ -779,6 +799,14 @@ html {
 
 .font-bold{
   font-weight: 700;
+}
+
+.font-thin{
+  font-weight: 100;
+}
+
+.font-normal{
+  font-weight: 400;
 }
 
 .italic{
@@ -838,6 +866,10 @@ html {
   background-color: rgb(255 255 255 / 0.05);
 }
 
+.hover\:bg-white\/10:hover{
+  background-color: rgb(255 255 255 / 0.1);
+}
+
 .hover\:text-zinc-200:hover{
   --tw-text-opacity: 1;
   color: rgb(228 228 231 / var(--tw-text-opacity));
@@ -853,6 +885,10 @@ html {
 
 .group.open .group-open\:mt-0{
   margin-top: 0px;
+}
+
+.group.open .group-open\:block{
+  display: block;
 }
 
 .group.open .group-open\:-rotate-45{
