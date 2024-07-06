@@ -1021,6 +1021,26 @@ html {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.animation-delay-\[150ms\]{
+  animation-delay: 150ms;
+}
+
+.animation-delay-\[150m\]{
+  animation-delay: 150m;
+}
+
+.animation-delay-\[200ms\]{
+  animation-delay: 200ms;
+}
+
+.animation-delay-\[300ms\]{
+  animation-delay: 300ms;
+}
+
+.animation-delay-\[75ms\]{
+  animation-delay: 75ms;
+}
+
 .absolute-h-center {
   position: absolute;
   left: 0;
