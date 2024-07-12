@@ -38,6 +38,16 @@
           carousel.scrollLeft = carousel.scrollLeft - itemWidth;
         });
       };
+      function changeTheme() {
+        const theme = document.querySelector("#theme");
+        if (theme.classList.contains("fa-moon")) {
+          theme.classList.remove("fa-moon");
+          theme.classList.add("fa-sun");
+        } else {
+          theme.classList.remove("fa-sun");
+          theme.classList.add("fa-moon");
+        }
+      }
     </script>
   </head>
   <body>
@@ -142,6 +152,14 @@
               </li>
               <li class="menu-item">
                 <a class="flex items-center" href="#">Support</a>
+              </li>
+              <li class="divider my-2 h-auto w-[1px] bg-pink-200"></li>
+              <li class="relative mr-10 flex items-center">
+                <i
+                  onclick="changeTheme()"
+                  class="fa-solid fa-moon w-[25px] cursor-pointer text-xl"
+                  id="theme"
+                ></i>
               </li>
             </ul>
           </div>
