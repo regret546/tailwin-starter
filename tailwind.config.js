@@ -12,9 +12,15 @@ module.exports = {
             transform: "scaleY(1.5)",
           },
         },
+
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         wavey: "wavey 1000ms linear infinite",
+        fadeIn: "fadeIn 300ms ease-in-out ",
       },
     },
   },

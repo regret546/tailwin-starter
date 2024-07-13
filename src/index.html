@@ -38,14 +38,29 @@
           carousel.scrollLeft = carousel.scrollLeft - itemWidth;
         });
       };
-      function changeTheme() {
-        const theme = document.querySelector("#theme");
-        if (theme.classList.contains("fa-moon")) {
-          theme.classList.remove("fa-moon");
-          theme.classList.add("fa-sun");
+
+      // Function to change the theme
+      function changeTheme(themeId, iconId, textId) {
+        const theme = document.getElementById(themeId);
+        const icon = document.getElementById(iconId);
+        const text = document.getElementById(textId);
+
+        if (theme.classList.contains("text-sky-950")) {
+          icon.classList.remove("fa-moon");
+          theme.classList.remove("text-sky-950");
+          theme.classList.remove("border-sky-950");
+          text.innerText = "Light";
+          icon.classList.add("fa-sun");
+          theme.classList.add("text-pink-200");
+          theme.classList.add("border-pink-200");
         } else {
-          theme.classList.remove("fa-sun");
-          theme.classList.add("fa-moon");
+          icon.classList.remove("fa-sun");
+          theme.classList.remove("text-pink-200");
+          theme.classList.remove("border-pink-200");
+          text.innerText = "Dark";
+          icon.classList.add("fa-moon");
+          theme.classList.add("text-sky-950");
+          theme.classList.add("border-sky-950");
         }
       }
     </script>
@@ -118,11 +133,27 @@
               >
                 <a class="flex items-center" href="#">Support</a>
               </li>
+              <ul
+                class="relative flex h-full w-full cursor-pointer items-center justify-center gap-2 p-4 font-bold text-pink-200 transition-colors ease-in-out"
+              >
+                <li class="ml-9">Theme:</li>
+                <li
+                  id="themeMobile"
+                  class="relative mr-10 flex h-max cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
+                  onclick="changeTheme('themeMobile', 'themeIconMobile', 'themeTextMobile')"
+                >
+                  <p id="themeTextMobile">Dark</p>
+                  <i
+                    id="themeIconMobile"
+                    class="fa-solid fa-moon w-[25px] animate-fadeIn transition-all"
+                  ></i>
+                </li>
+              </ul>
             </ul>
           </div>
 
           <div class="hidden flex-1 items-center justify-end font-bold md:flex">
-            <ul class="flex h-full gap-6">
+            <ul class="flex h-full items-center gap-6">
               <li class="menu-item">
                 <a class="flex items-center" href="#">Home</a>
               </li>
@@ -153,12 +184,19 @@
               <li class="menu-item">
                 <a class="flex items-center" href="#">Support</a>
               </li>
-              <li class="divider my-2 h-auto w-[1px] bg-pink-200"></li>
-              <li class="relative mr-10 flex items-center">
+              <li
+                class="divider my-2 h-[40px] w-[2px] bg-pink-200 transition-all"
+              ></li>
+
+              <li
+                id="themeDesktop"
+                class="relative mr-10 flex h-max cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
+                onclick="changeTheme('themeDesktop', 'themeIconDesktop', 'themeTextDesktop')"
+              >
+                <p id="themeTextDesktop">Dark</p>
                 <i
-                  onclick="changeTheme()"
-                  class="fa-solid fa-moon w-[25px] cursor-pointer text-xl"
-                  id="theme"
+                  id="themeIconDesktop"
+                  class="fa-solid fa-moon w-[25px] animate-fadeIn transition-all"
                 ></i>
               </li>
             </ul>
