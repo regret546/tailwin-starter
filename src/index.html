@@ -8,6 +8,9 @@
     <script defer src="./assets/fontawesome/js/solid.min.js"></script>
     <script>
       window.onload = function () {
+        initializeTheme("themeMobile", "themeIconMobile", "themeTextMobile");
+        initializeTheme("themeDesktop", "themeIconDesktop", "themeTextDesktop");
+
         const mobileMenuicon = document.querySelector("#mobile-menu-button");
         mobileMenuicon.addEventListener("click", function () {
           if (mobileMenuicon.classList.contains("open")) {
@@ -38,6 +41,7 @@
           carousel.scrollLeft = carousel.scrollLeft - itemWidth;
         });
       };
+      let currentTheme = dark;
 
       // Function to change the theme
       function changeTheme(themeId, iconId, textId) {
@@ -46,6 +50,34 @@
         const text = document.getElementById(textId);
 
         if (theme.classList.contains("text-sky-950")) {
+          icon.classList.remove("fa-moon");
+          theme.classList.remove("text-sky-950");
+          theme.classList.remove("border-sky-950");
+          text.innerText = "Light";
+          icon.classList.add("fa-sun");
+          theme.classList.add("text-pink-200");
+          theme.classList.add("border-pink-200");
+          localStorage.setItem("theme", "light");
+        } else {
+          icon.classList.remove("fa-sun");
+          theme.classList.remove("text-pink-200");
+          theme.classList.remove("border-pink-200");
+          text.innerText = "Dark";
+          icon.classList.add("fa-moon");
+          theme.classList.add("text-sky-950");
+          theme.classList.add("border-sky-950");
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      // Function to initialize the theme based on saved preference
+      function initializeTheme(themeId, iconId, textId) {
+        const theme = document.getElementById(themeId);
+        const icon = document.getElementById(iconId);
+        const text = document.getElementById(textId);
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "light") {
           icon.classList.remove("fa-moon");
           theme.classList.remove("text-sky-950");
           theme.classList.remove("border-sky-950");
@@ -139,7 +171,7 @@
                 <li class="ml-9">Theme:</li>
                 <li
                   id="themeMobile"
-                  class="relative mr-10 flex h-max cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
+                  class="relative flex h-max w-[80px] cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
                   onclick="changeTheme('themeMobile', 'themeIconMobile', 'themeTextMobile')"
                 >
                   <p id="themeTextMobile">Dark</p>
@@ -190,7 +222,7 @@
 
               <li
                 id="themeDesktop"
-                class="relative mr-10 flex h-max cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
+                class="relative mr-4 flex h-max w-[80px] cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
                 onclick="changeTheme('themeDesktop', 'themeIconDesktop', 'themeTextDesktop')"
               >
                 <p id="themeTextDesktop">Dark</p>
