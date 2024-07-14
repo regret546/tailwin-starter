@@ -8,8 +8,10 @@
     <script defer src="./assets/fontawesome/js/solid.min.js"></script>
     <script>
       window.onload = function () {
-        initializeTheme("themeMobile", "themeIconMobile", "themeTextMobile");
-        initializeTheme("themeDesktop", "themeIconDesktop", "themeTextDesktop");
+        window.addEventListener("resize", function () {
+          initializeTheme("themeToggleDesktop", "themeTextDesktop");
+          initializeTheme("themeToggleMobile", "themeTextMobile");
+        });
 
         const mobileMenuicon = document.querySelector("#mobile-menu-button");
         mobileMenuicon.addEventListener("click", function () {
@@ -41,63 +43,34 @@
           carousel.scrollLeft = carousel.scrollLeft - itemWidth;
         });
       };
-      let currentTheme = dark;
 
-      // Function to change the theme
-      function changeTheme(themeId, iconId, textId) {
-        const theme = document.getElementById(themeId);
-        const icon = document.getElementById(iconId);
-        const text = document.getElementById(textId);
-
-        if (theme.classList.contains("text-sky-950")) {
-          icon.classList.remove("fa-moon");
-          theme.classList.remove("text-sky-950");
-          theme.classList.remove("border-sky-950");
-          text.innerText = "Light";
-          icon.classList.add("fa-sun");
-          theme.classList.add("text-pink-200");
-          theme.classList.add("border-pink-200");
+      function changeTheme(themeToggle, themeText) {
+        const themeToggleElement = document.getElementById(themeToggle);
+        const themeTextElement = document.getElementById(themeText);
+        if (document.body.classList.contains("dark")) {
+          document.body.classList.remove("dark");
+          themeTextElement.innerText = "Dark";
           localStorage.setItem("theme", "light");
         } else {
-          icon.classList.remove("fa-sun");
-          theme.classList.remove("text-pink-200");
-          theme.classList.remove("border-pink-200");
-          text.innerText = "Dark";
-          icon.classList.add("fa-moon");
-          theme.classList.add("text-sky-950");
-          theme.classList.add("border-sky-950");
+          document.body.classList.add("dark");
+          themeTextElement.innerText = "Light";
           localStorage.setItem("theme", "dark");
         }
       }
 
-      // Function to initialize the theme based on saved preference
-      function initializeTheme(themeId, iconId, textId) {
-        const theme = document.getElementById(themeId);
-        const icon = document.getElementById(iconId);
-        const text = document.getElementById(textId);
+      function initializeTheme(themeToggle, themeText) {
+        const themeToggleElement = document.getElementById(themeToggle);
+        const themeTextElement = document.getElementById(themeText);
         const savedTheme = localStorage.getItem("theme");
-
-        if (savedTheme === "light") {
-          icon.classList.remove("fa-moon");
-          theme.classList.remove("text-sky-950");
-          theme.classList.remove("border-sky-950");
-          text.innerText = "Light";
-          icon.classList.add("fa-sun");
-          theme.classList.add("text-pink-200");
-          theme.classList.add("border-pink-200");
+        if (savedTheme === "dark") {
+          themeTextElement.innerText = "Light";
         } else {
-          icon.classList.remove("fa-sun");
-          theme.classList.remove("text-pink-200");
-          theme.classList.remove("border-pink-200");
-          text.innerText = "Dark";
-          icon.classList.add("fa-moon");
-          theme.classList.add("text-sky-950");
-          theme.classList.add("border-sky-950");
+          themeTextElement.innerText = "Dark";
         }
       }
     </script>
   </head>
-  <body>
+  <body class="dark">
     <main class="bg-zinc-200 dark:bg-zinc-900">
       <header class="text-zinc-100">
         <nav
@@ -170,14 +143,16 @@
               >
                 <li class="ml-9">Theme:</li>
                 <li
-                  id="themeMobile"
-                  class="relative flex h-max w-[80px] cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
-                  onclick="changeTheme('themeMobile', 'themeIconMobile', 'themeTextMobile')"
+                  id="themeToggleMobile"
+                  onclick="changeTheme('themeToggleMobile', 'themeTextMobile')"
+                  class="relative mr-4 flex h-max w-[80px] cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950 dark:border-pink-200 dark:text-pink-200"
                 >
-                  <p id="themeTextMobile">Dark</p>
+                  <p id="themeTextMobile">Light</p>
                   <i
-                    id="themeIconMobile"
-                    class="fa-solid fa-moon w-[25px] animate-fadeIn transition-all"
+                    class="fa-solid fa-sun hidden w-[25px] animate-fadeIn transition-all dark:block"
+                  ></i>
+                  <i
+                    class="fa-solid far fa-moon w-[25px] animate-fadeIn transition-all dark:hidden"
                   ></i>
                 </li>
               </ul>
@@ -221,14 +196,16 @@
               ></li>
 
               <li
-                id="themeDesktop"
-                class="relative mr-4 flex h-max w-[80px] cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950"
-                onclick="changeTheme('themeDesktop', 'themeIconDesktop', 'themeTextDesktop')"
+                id="themeToggleDesktop"
+                onclick="changeTheme('themeToggleDesktop', 'themeTextDesktop')"
+                class="relative mr-4 flex h-max w-[80px] cursor-pointer items-center rounded-sm border-2 border-sky-950 p-1 text-[1rem] text-sky-950 dark:border-pink-200 dark:text-pink-200"
               >
-                <p id="themeTextDesktop">Dark</p>
+                <p id="themeTextDesktop">Light</p>
                 <i
-                  id="themeIconDesktop"
-                  class="fa-solid fa-moon w-[25px] animate-fadeIn transition-all"
+                  class="fa-solid fa-sun hidden w-[25px] animate-fadeIn transition-all dark:block"
+                ></i>
+                <i
+                  class="fa-solid far fa-moon w-[25px] animate-fadeIn transition-all dark:hidden"
                 ></i>
               </li>
             </ul>
