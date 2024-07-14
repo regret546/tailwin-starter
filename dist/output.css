@@ -971,11 +971,6 @@ h6{
   border-style: none;
 }
 
-.border-pink-200{
-  --tw-border-opacity: 1;
-  border-color: rgb(251 207 232 / var(--tw-border-opacity));
-}
-
 .border-sky-950{
   --tw-border-opacity: 1;
   border-color: rgb(8 47 73 / var(--tw-border-opacity));
